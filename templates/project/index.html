@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Proyectos{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+			{% block content %}
+			{% if projects_list %}
+					<table border=1>
+					{% for project in projects_list %}
+							<tr>
+								<td><a href="/project/entry/{{ project.id }}/">{{ project.description }}</a></td>
+								<td><a href="/project/entry/{{ project.id }}/" class="btn small success">Edit</a></td>
+								<td><a href="/project/entry/{{ project.id }}/delete" class="btn small danger">Delete</a></td>
+							</tr>
+					{% endfor %}
+					</table>
+			{% else %}
+					<p>No accounts are available.</p>
+			{% endif %}
+			{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/project/entry/" class="btn success" >+ Proyecto</a></li>
+						<li><a href="/project/toCSV/" class="btn info" >a CSV</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

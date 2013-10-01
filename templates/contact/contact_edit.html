@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Add Contact{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+				<form action="" method="post">
+				{% csrf_token %}
+        {{ form.management_form }}
+          <div class="row">
+            {% for set in fieldsets %}
+              <div class="span7">
+                <fieldset {% if set.cls %}class="{{ set.cls }}">{% endif %}
+                  <legend>{{ set.legend }}</legend>
+                  {% for field in set %}
+                    <div{% if field.errors %} class="error"{% endif %}>
+                      {{ field }}
+                      {% for err in field.errors %}
+                      <span class="error_message">{{ err }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endfor %}
+                </fieldset>
+              </div>
+            {% endfor %}
+          </div>
+				<input type="submit" value="Save" class="btn primary" />
+				</form>
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/contact/entry/" class="btn success">+ Contact</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

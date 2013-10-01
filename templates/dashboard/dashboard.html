@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+			{% block content %}
+				{% if income %}
+						<table border=1>
+								<tr>
+									<td>Income</td>
+									<td>{{ income }}</td>
+								</tr>
+								<tr>
+									<td>Expenses</td>
+									<td>{{ expenses }}</td>
+								</tr>
+						</table>
+				{% else %}
+						<p>No info is available.</p>
+				{% endif %}
+			{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/journal/entry/" class="btn success" >+ Transacción</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

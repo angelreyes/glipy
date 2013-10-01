@@ -1,0 +1,78 @@
+{% comment %}
+
+Login page to authenticate users.
+
+{% endcomment %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<title>Glipy - Login</title>
+{% load static from staticfiles %}
+<link rel="stylesheet" href="{% static "styles/styles1.css"%}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "styles/styles2.css"%}" type="text/css" media="screen" />
+</head>
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<body>
+<div class="main">  
+   <div class="container">
+     <div class="login">
+        
+        <div class="well">
+          <h3 align="center">Welcome to Glipy!</h3>  
+          <h4 align="center">On-Line General Ledger</h4>  
+          {% if form.errors %}
+            <div class="alert-message error">
+            <p><strong>Warning!</strong>Username or password is wrong, try it again!.</p>
+            </div><!-- end lert-message-->
+          {% endif %}
+
+
+          <section>
+              <form class="form-stacked" method="post" action=".">
+              {% csrf_token %}
+                  <p>
+                      <label for="id_username">Username:</label>
+                      {{ form.username }}
+                  </p>
+                  <p>
+                      <label for="id_password">Password:</label>
+                      {{ form.password }}
+                  </p>
+                  <fieldset>
+                     <label class="remember">
+                      <input type="checkbox" value="1" name="remember_me" />
+                      <span>Remember me</span>
+                     </label>
+                  </fieldset>              
+                  {% if next %}
+                      <input type="hidden" name="next" value="{{ next }}" />
+                  {% else %}
+                      <input type="hidden" name="next" value="/dashboard/" />
+                  {% endif %}
+                  <input type="submit" class="btn large" value="Login" />
+              </form>
+          </section>
+
+        </div><!-- end well-->
+   </div><!-- end login-->
+ 
+  </div><!--end container-->
+  
+  <div class="modal-footer">
+	   <p>Copyright &copy; 2013 Glipy</p>
+	      
+  </div><!--end footer-login -->
+  
+</div> <!--end main -->
+</body>
+</html>
+
+{% endblock %}

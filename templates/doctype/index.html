@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction Types{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+			{% block content %}
+			{% if types_list %}
+					<table border=1>
+					{% for doctype in types_list %}
+							<tr>
+								<td><a href="/doctype/entry/{{ doctype.id }}/">{{ doctype.description }}</a></td>
+								<td><a href="/doctype/entry/{{ doctype.id }}/" class="btn small success">Edit</a></td>
+								<td><a href="/doctype/entry/{{ doctype.id }}/delete" class="btn small danger">Delete</a></td>
+							</tr>
+					{% endfor %}
+					</table>
+			{% else %}
+					<p>No accounts are available.</p>
+			{% endif %}
+			{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/doctype/entry/" class="btn success" >+ Tras. Type</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

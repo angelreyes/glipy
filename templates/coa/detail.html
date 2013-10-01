@@ -1,0 +1,10 @@
+<h1>Account {{ chart.accno }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{{ chart.description }} 
+<form action="/gl/{{ chart.id }}/" method="post">
+{% csrf_token %}
+		<input type="text" name="description" id="description" value="{{ chart.description }}" />
+		<br>
+		<input type="submit" value="Save" />
+</form>

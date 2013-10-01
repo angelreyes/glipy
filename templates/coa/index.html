@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Chart of Accounts{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+			{% block content %}
+			{% if accounts_list %}
+					<table border=1>
+					{% for account in accounts_list %}
+							<tr>
+								<td><a href="/coa/accounts/{{ account.id }}/">{{ account.accno }}</a></td>
+								<td>{{ account.description }}</td>
+								<td>{{ account.category }}</td>
+								<td><a href="/coa/accounts/{{ account.id }}/" class="btn small success">Edit</a></td>
+								<td><a href="/coa/accounts/{{ account.id }}/delete" class="btn small danger">Delete</a></td>
+							</tr>
+					{% endfor %}
+					</table>
+			{% else %}
+					<p>No accounts are available.</p>
+			{% endif %}
+			{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/coa/accounts/" class="btn success" >+ account</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

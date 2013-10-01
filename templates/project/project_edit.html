@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Add Transaction Type{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+				<form action="" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Save" class="btn primary" />
+				</form>
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/project/entry/" class="btn success" >+ Proyecto</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

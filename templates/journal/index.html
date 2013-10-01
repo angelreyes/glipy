@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Transactions{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+			{% block content %}
+				{% if trans_list %}
+						<table border=1>
+						{% for trans in trans_list %}
+								<tr>
+									<td>{{ trans.doctype }}</td>
+									<td><a href="/journal/entry/{{ trans.id }}/">{{ trans.reference }}</a></td>
+									<td>{{ trans.description }}</td>
+									<td>{{ trans.trans_date }}</td>
+							 		<td><a href="/journal/entry/{{ trans.id }}/" class="btn small success">Edit</a></td>
+           				<td><a href="/journal/entry/{{ trans.id }}/delete" class="btn small danger">Delete</a></td>
+								</tr>
+						{% endfor %}
+						</table>
+				{% else %}
+						<p>No trans are available.</p>
+				{% endif %}
+			{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/journal/entry/" class="btn success" >+ Trans.</a></li>
+						<li><a href="/contact/entry/" class="btn info" >+ Contact</a></li>
+						<li><a href="/coa/accounts/" class="btn info" >+ Account</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

@@ -1,0 +1,113 @@
+body,
+html {
+	margin:0;
+	padding:0;
+	color:#000;
+	background:#a7a09a;
+}
+
+#header {
+float:left;
+background:#ddd; 
+}
+#navigation {
+background:#c99;
+}
+#content {
+background:#9c9;
+}
+#sidebar {
+background:#c9c;
+}
+#footer {
+background:#cc9;
+}
+
+#header {
+padding:5px 10px;
+background:#ddd;
+}
+
+h1 {
+	margin:0;
+}
+
+#container {
+width:750px;
+margin:0 auto;
+background:#99c;
+}
+
+#headernav {
+float:right;
+padding:5px 10px;
+background:#ddd;
+}
+
+
+#headernav ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#headernav li {
+display:inline;
+margin:0;
+padding:0;
+}
+
+#navigation {
+padding:5px 10px;
+background:#c99;
+}
+
+
+#navigation ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#navigation li {
+display:inline;
+margin:0;
+padding:0;
+}
+
+
+#wrapper {
+width:750px;
+margin:0 auto;
+background:#99c;
+}
+
+#content {
+float:left;
+width:480px;
+padding:10px;
+background:#9c9;
+}
+
+h2 {
+	margin:0 0 1em;
+}
+
+#sidebar {
+float:right;
+width:230px;
+padding:10px;
+background:#99c;
+}
+
+#footer {
+clear:both;
+padding:5px 10px;
+background:#cc9;
+}
+
+#footer p {
+margin:0;
+}
+
+.clearBoth { clear:both; }

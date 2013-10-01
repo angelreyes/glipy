@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Taxes{% endblock %}
+
+		<div id="wrapper">
+		{% block wrapper%}
+
+			<div id="content" class="span14">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+			{% block content %}
+			{% if taxes_list %}
+					<table border=1>
+					{% for tax in taxes_list %}
+							<tr>
+								<td><a href="/tax/entry/{{ tax.id }}/">{{ tax.taxno }}</a></td>
+								<td>{{ tax.description }}</td>
+								<td>{{ tax.account }}</td>
+								<td>{{ tax.calc_type }}</td>
+								<td><a href="/tax/entry/{{ tax.id }}/" class="btn small success">Edit</a></td>
+								<td><a href="/tax/entry/{{ tax.id }}/delete" class="btn small danger">Delete</a></td>
+							</tr>
+					{% endfor %}
+					</table>
+			{% else %}
+					<p>No accounts are available.</p>
+			{% endif %}
+			{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span22">
+			{% block sidebar %}
+					<ul>
+						<li><a href="/tax/entry/" class="btn success" >+ Tax</a></li>
+					</ul>
+			{% endblock %}
+			</div>
+
+		{% endblock %}
+		</div>

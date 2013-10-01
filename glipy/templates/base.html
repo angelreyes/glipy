@@ -1,0 +1,80 @@
+{% comment %}
+
+GLIPY - My Online Accounting App
+
+{% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		{% load static from staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static "styles/styles1.css" %}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{% static "styles/styles2.css" %}" media="screen" />
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <meta name="description" content="online accounting app">
+    <meta name="author" content="Angel G. Reyes">
+    <link rel="shortcut icon" href="http://localhost:8000/media/images/favicon.ico">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+		<title>{% block title %}Glipy - My Online Accounting App{% endblock %}</title>
+		{% block head %}
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(function() {
+					$( ".datePicker" ).datepicker({defaultDate: '', showAnim: 'fold', showButtonPanel: true });
+				});
+			});
+		</script>
+		{% endblock %}
+
+  </head>
+  <body>
+   
+    <div class="container">
+      <div class="content">
+         <div class="page-header">
+           <div class="logo"><h2>Glipy</h2></div><!-- end logo -->
+           <div class="nav-bar">
+             <ul>
+               	<li><a href="/myinfo/">My Info</a></li>
+               	<li><a href="/admin/">Admin</a></li>
+               	<li><a href="/logout/">Logout</a></li>
+           	 </ul> 
+           </div><!-- end nav-bar -->
+         </div><!--page header -->
+       
+				{% block navigation %}
+        <div class="menu">      
+         <div class="nav-user">
+           <ul class="tabs" >
+            <li class="active"><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/journal">Journal</a></li>
+            <li><a href="/coa">Accounts</a></li>
+            <li><a href="/contact">Partners</a></li>
+            <li><a href="/tax">Taxes</a></li>
+            <li><a href="/doctype">Doc Types</a></li>
+						<!--- <li><a href="/project">Proyectos</a></li> --->
+           </ul> 
+         </div><!--nav-user -->
+				</div><!--end menu -->
+				{% endblock %}
+
+
+				<div class="row">
+        {% block wrapper %}
+
+
+        {% endblock %}
+				</div><!-- end row -->
+
+      <footer>
+        <p>&copy; Glipy 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
