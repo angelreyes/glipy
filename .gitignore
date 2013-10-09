@@ -3,3 +3,4 @@ bin/
 glipy.db
 run/
 *.pyc
+glipy/settings.py
