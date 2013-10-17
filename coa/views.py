@@ -34,3 +34,10 @@ def account_edit(request, account_id=None):
 
     return render_to_response('coa/account_edit.html', RequestContext(request, {'form' : form, 'fieldsets' : fieldsets}))
 
+
+from .serializer import AccountSerializer
+from rest_framework import viewsets
+
+class AccountViewSet(viewsets.ModelViewSet):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer  
